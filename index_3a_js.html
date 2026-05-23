@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <style>
+      body {
+        background-color: black;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .container {
+        padding-top: 3rem;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      #getData {
+        padding: 0.3rem 1rem;
+        font-weight: bold;
+        font-size: 1rem;
+      }
+
+      .response {
+        width: 80%;
+        background-color: white;
+        color: black;
+        padding: 1rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <button id="getData">Get Data</button>
+    </div>
+
+    <script>
+      let btn = document.querySelector("#getData");
+      let container = document.querySelector(".container");
+      let div = document.createElement("div");
+      btn.addEventListener("click", () => {
+        async function getDataApi() {
+          try {
+            let response = await fetch(
+              "https://jsonplaceholder.typicode.com/users",
+            );
+            let data = await response.json();
+
+            let got = "";
+            for (const key in data) {
+              got += ` ${data[key].name}, ${data[key].email}  /  `;
+            }
+            div.classList = "response";
+            div.innerHTML = got;
+            container.append(div);
+          } catch (error) {
+            console.log("error occured");
+          }
+        }
+        getDataApi();
+      });
+    </script>
+  </body>
+</html>

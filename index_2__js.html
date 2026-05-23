@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>assignemnt2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        margin-top: 4rem;
+        background-color: aquamarine;
+        border-radius: 3px;
+        border: 1px solid black;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+      }
+      .content {
+        width: 40%;
+        padding: 1rem;
+        margin-top: 3rem;
+        display: none;
+        background-color: beige;
+      }
+      ul{
+        margin-top: 1rem;
+        list-style-type: none;
+      }
+    </style>
+  </head>
+  <body>
+    <button>Show</button>
+    <div class="content">
+        <ul></ul>
+    </div>
+    <script>
+      let weekDays = [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday",
+        "Saturday",
+        "Sunday",
+      ];
+      let btn = document.querySelector("button");
+      let body = document.querySelector("body");
+      let contentdiv = document.querySelector(".content");
+      let ul = document.querySelector("ul");
+      btn.addEventListener("click", () => {
+          let h2 = document.createElement("h2"); 
+          h2.innerHTML = "Names of the days of the week" 
+          contentdiv.prepend(h2)          
+          weekDays.forEach((el,index) => {
+              let li = document.createElement("li");
+              li.innerHTML = `<li>${index+1} ${el}</li>`;
+              ul.append(li)
+              contentdiv.style.display="block"
+        });
+      });
+    </script>
+  </body>
+</html>
