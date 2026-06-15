@@ -1,0 +1,25 @@
+/* @import "tailwindcss"; */
+
+
+
+.screen{
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: flex-end;
+    padding-bottom: 2rem;
+    justify-content: center;
+}
+.bar{
+    display: flex;
+    gap: 2rem;
+    background-color: rgb(255, 255, 255);
+    width: fit-content;
+    padding: 1rem 3rem;
+    border-radius: 1rem;
+}
+.bar button{
+    border: none;
+    padding: 0.2rem 0.8rem;
+    border-radius: 1rem;
+}

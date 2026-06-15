@@ -1,0 +1,46 @@
+@import "tailwindcss";
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body,
+html {
+  font-family: Arial, Helvetica, sans-serif;
+  color: rgb(255, 255, 255);
+}
+#root {
+  width: 100%;
+  min-height: 100vh;
+  background-color: rgba(0, 0, 0, 0.89);
+}
+.container{
+  padding: 3rem 0rem;
+}
+
+.card{
+  padding: 1rem 3rem; 
+  border-radius: 2rem;
+}
+.card img{
+  border-radius: 50%;
+  object-fit: cover;
+}
+.container h1{
+  font-size: 2rem;
+}
+.container button{
+  padding: 0.3rem 0.8rem;
+  border-radius: 2rem;
+  font-weight: bold;
+}
+.noPost{
+  color: gray;
+  margin-top: 5rem;
+}
+
+.info{
+  color: rgba(220, 220, 220, 0.888);
+}
+
