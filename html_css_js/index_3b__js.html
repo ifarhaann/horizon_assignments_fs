@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>assignment2</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      button {
+        padding: 0.5rem 1rem;
+        margin-top: 4rem;
+        background-color: aquamarine;
+        border-radius: 3px;
+        border: 1px solid black;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      .removeBtn {
+        padding: 0.5rem 1rem;
+        margin-top: 4rem;
+        background-color: rgb(247, 3, 3);
+        border-radius: 3px;
+        border: 1px solid black;
+        color: rgb(0, 0, 0);
+        font-weight: bold;
+        cursor: pointer;
+      }
+      table {
+        background-color: rgb(30, 255, 5);
+        color: rgb(0, 0, 0);
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="btns">
+      <button>Get Data</button>
+    </div>
+    <table class="response" border="1px"></table>
+
+    <script>
+      let button = document.querySelector("button");
+      let table = document.querySelector(".response");
+      let tr = document.querySelector("tr");
+      let btnsdiv = document.querySelector(".btns");
+
+      button.addEventListener("click", () => {
+        async function api() {
+          try {
+            let apiResponse = await fetch(
+              "https://jsonplaceholder.typicode.com/users",
+            );
+            let recievedData = await apiResponse.json();
+            console.log(recievedData);
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+            <tr>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Username</th>
+            </tr>
+            `;
+            table.appendChild(tr);
+            let removeData = document.createElement("button");
+            removeData.innerHTML = "Remove Data";
+            removeData.className = "removeBtn";
+            btnsdiv.appendChild(removeData);
+            removeData.addEventListener("click", () => {
+              table.innerHTML = "";
+              removeData.remove();
+            });
+            for (const key in recievedData) {
+              let name = recievedData[key].name;
+              let email = recievedData[key].email;
+              let username = recievedData[key].username;
+              let tr = document.createElement("tr");
+              tr.innerHTML = `
+            <tr>
+            <td>${name}</td>
+            <td>${email}</td>
+            <td>${username}</tdh
+            </tr>
+            `;
+              table.appendChild(tr);
+            }
+          } catch (error) {
+            console.log("oops , error");
+          }
+        }
+        api();
+      });
+    </script>
+  </body>
+</html>
